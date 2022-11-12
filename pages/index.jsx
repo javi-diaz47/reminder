@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Header } from "../components/Header";
 import styles from "../styles/Home.module.css";
 
+import { Navbar } from "../components/Drawer";
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -16,7 +18,8 @@ export default function Home() {
         Welcome to <a href="">Next.js!</a>
       </main>
 
-      <Header />
+      {/* <Header /> */}
+      {/* <Navbar /> */}
     </div>
   );
 }
