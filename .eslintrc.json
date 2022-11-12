@@ -6,6 +6,7 @@
     },
     "extends": [
         "airbnb",
+        "prettier",
         "plugin:react/recommended"
     ],
     "overrides": [
@@ -15,9 +16,12 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
-       "react/react-in-jsx-scope": "off"
+       "prettier/prettier": ["error"],
+       "react/react-in-jsx-scope": "off",
+       "import/prefer-default-export": "false"
     }
 }
