@@ -43,6 +43,7 @@ const Navbar = (props) => {
     <Box sx={{ display: "flex" }}>
       <AppBar
         position="fixed"
+        className="bg-white"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
@@ -56,7 +57,7 @@ const Navbar = (props) => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <Bars3Icon className="w-8" />
+            <Bars3Icon className="text-primary w-10" />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -65,7 +66,6 @@ const Navbar = (props) => {
           container={container}
           variant="temporary"
           open={mobileOpen}
-          className="bg-primary"
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
