@@ -12,8 +12,8 @@ export default function Home() {
       </Head>
       <main className="text-3xl font-bold text-primary">
         <Link href="login"> Ingresar </Link>
-        <Link href="sing_up"> Registrar </Link>
-        Welcome to <a href="">Next.js!</a>
+        <Link href="sing-up"> Registrar </Link>
+        Welcome to <a href="">MyDocRminder</a>
       </main>
     </div>
   );
