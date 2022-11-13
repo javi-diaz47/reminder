@@ -8,8 +8,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import ProfilePicture from "../ProfilePicture";
 
-const NavbarList = ({ routes, handleDrawerToggle }) => {
+const Sidebar = ({ routes, handleDrawerToggle }) => {
   return (
     <div>
       <Toolbar>
@@ -24,6 +25,7 @@ const NavbarList = ({ routes, handleDrawerToggle }) => {
         </IconButton>
       </Toolbar>
       <List>
+        <ProfilePicture />
         {routes.map(({ url, text, icon }) => (
           <Link key={text} onClick={handleDrawerToggle} href={url}>
             <ListItem disablePadding>
@@ -40,4 +42,4 @@ const NavbarList = ({ routes, handleDrawerToggle }) => {
   );
 };
 
-export { NavbarList };
+export { Sidebar };

@@ -6,13 +6,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
-import {
-  Bars3Icon,
-  ChartBarIcon,
-  HeartIcon,
-  HomeIcon,
-} from "@heroicons/react/24/solid";
-import { NavbarList } from "../NavbarList";
+import { Bars3Icon, ChartBarIcon, HeartIcon, HomeIcon } from "@heroicons/react/24/solid";
+import { Sidebar } from "../Sidebar";
 import Image from "next/image";
 
 const routes = [
@@ -42,12 +37,10 @@ const Navbar = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
@@ -67,15 +60,12 @@ const Navbar = (props) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
+      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="mailbox folders">
         <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
+          className="bg-primary"
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
@@ -88,24 +78,7 @@ const Navbar = (props) => {
             },
           }}
         >
-          <figure
-            className={`
-              w-12
-              h-12
-              rounded-full bg-slate-300 relative overflow-hidden 
-            `}
-          >
-            <Image
-              src={
-                "https://lh3.googleusercontent.com/a/ALm5wu29CN4UC9sUy_F7XVCmac7MmQ_0RXDwepXzFVk0JQ=s96-c"
-              }
-              alt="foto de perfil"
-              layout="fill"
-              objectFit="cover"
-            />
-          </figure>
-
-          <NavbarList routes={routes} handleDrawerToggle={handleDrawerToggle} />
+          <Sidebar routes={routes} handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -118,7 +91,7 @@ const Navbar = (props) => {
           }}
           open
         >
-          <NavbarList routes={routes} handleDrawerToggle={handleDrawerToggle} />
+          <Sidebar routes={routes} handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
       </Box>
       <Box
