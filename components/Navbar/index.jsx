@@ -13,6 +13,7 @@ import {
   HomeIcon,
 } from "@heroicons/react/24/solid";
 import { NavbarList } from "../NavbarList";
+import Image from "next/image";
 
 const routes = [
   {
@@ -32,6 +33,7 @@ const routes = [
   },
 ];
 const drawerWidth = 240;
+
 const Navbar = (props) => {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -86,6 +88,23 @@ const Navbar = (props) => {
             },
           }}
         >
+          <figure
+            className={`
+              w-12
+              h-12
+              rounded-full bg-slate-300 relative overflow-hidden 
+            `}
+          >
+            <Image
+              src={
+                "https://lh3.googleusercontent.com/a/ALm5wu29CN4UC9sUy_F7XVCmac7MmQ_0RXDwepXzFVk0JQ=s96-c"
+              }
+              alt="foto de perfil"
+              layout="fill"
+              objectFit="cover"
+            />
+          </figure>
+
           <NavbarList routes={routes} handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
         <Drawer

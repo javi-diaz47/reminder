@@ -25,8 +25,8 @@ const NavbarList = ({ routes, handleDrawerToggle }) => {
       </Toolbar>
       <List>
         {routes.map(({ url, text, icon }) => (
-          <Link onClick={handleDrawerToggle} href={url}>
-            <ListItem key={text} disablePadding>
+          <Link key={text} onClick={handleDrawerToggle} href={url}>
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText primary={text} />
