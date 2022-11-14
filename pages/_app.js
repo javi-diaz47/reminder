@@ -9,8 +9,26 @@ import { getCookie } from "cookies-next";
 function MyApp({ Component, pageProps, userData }) {
   const [authenticatedState, setAuthenticatedState] = useState("");
   const [user, setUser] = useState(userData);
-  console.log(userData);
+  const signed = async () => {
+    const {
+      data: {
+        user: { user_metadata },
+      },
+      error,
+    } = await supabase.auth.getUser();
+
+    setUser(user_metadata);
+
+    if (!error) {
+      return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
+    if (!user) {
+      // signed();
+    }
     const {
       data: { subscription: authListener },
     } = supabase.auth.onAuthStateChange((event, session) => {
@@ -19,7 +37,6 @@ function MyApp({ Component, pageProps, userData }) {
       console.log(`Event: ${event}`);
       //redirect the user signed from the magiclink to the profile page
       if (event === "SIGNED_IN") {
-        console.log("on signed in");
         setAuthenticatedState("authenticated");
         setUser(jwt.decode(session.access_token).user_metadata);
         handleAuthChange(event, session);
