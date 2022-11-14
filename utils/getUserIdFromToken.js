@@ -3,9 +3,9 @@ import { getCookie } from "cookies-next";
 
 const getUserIdFromToken = async ({ req, res }) => {
   const token = getCookie("token", { req, res });
-  const id = jwt.decode(token).sub;
+  const id = jwt.decode(token)?.sub;
 
-  return id;
+  return id || "";
 };
 
 export { getUserIdFromToken };

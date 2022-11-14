@@ -1,13 +1,21 @@
 import { getCookie } from "cookies-next";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import jwt from "jsonwebtoken";
 import { useState } from "react";
 import Button from "../../components/Button";
 import { Input } from "../../components/Input";
 import { addMedicineDB } from "../../utils/addMedicine";
 import { supabase } from "../../utils/supabase";
+import { motion } from "framer-motion";
+import Modal from "../../components/Modal";
+import { useModal } from "../../hooks/useModal";
+import { useRouter } from "next/router";
 
 export default function addMedicine({ id }) {
   const [name, setName] = useState("");
+  const { modal, handleModal } = useModal("¡Se agrego Exitosamente!");
+  const route = useRouter();
+
   const onSubmit = async (ev) => {
     ev.preventDefault();
     // addMedicineDB({ name, user_id: id });
@@ -15,23 +23,28 @@ export default function addMedicine({ id }) {
       user_id: id,
       name,
     };
-    console.log(med);
 
-    const { data, error } = await supabase.from("medicine").insert([med]);
-    console.log(data);
-
-    if (error) {
-      console.log(error);
+    const { error } = addMedicineDB(med);
+    if (!error) {
+      handleModal();
+      setName("");
+      setTimeout(() => {
+        route.back();
+      }, 500);
     }
+    console.log(med);
   };
+
   return (
     <div className="flex flex-col gap-8 max-w-screen-md">
+      {modal}
       <h2 className="text-3xl font-bold">Agregar Medicamento</h2>
       <form onSubmit={onSubmit} className="flex flex-col gap-8">
         <Input
           placeholder="Nombre del medicamento"
           name="name"
           value={name}
+          required
           onChange={(ev) => setName(ev.target.value)}
         />
         <div className="flex justify-center">

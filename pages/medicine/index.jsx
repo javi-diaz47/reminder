@@ -69,6 +69,8 @@ export default Medicine;
 
 export async function getServerSideProps(context) {
   const id = await getUserIdFromToken(context);
+  console.log("form server");
+  console.log(id);
   const medicines = await getMedicine(id);
 
   return {

@@ -1,11 +1,13 @@
 import { supabase } from "./supabase";
 
-const addMedicineDB = async ({ user_id, name }) => {
-  // if (error) {
-  //   console.log(error);
-  // }
-  // console.log(data);
-  // return data;
+const addMedicineDB = async (med) => {
+  const { data, error } = await supabase.from("medicine").insert([med]);
+
+  if (error) {
+    console.log(error);
+  }
+  console.log(data);
+  return { data, error };
 };
 
 export { addMedicineDB };
