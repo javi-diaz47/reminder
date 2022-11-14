@@ -5,9 +5,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const onSubmit = async () => {
     ev.preventDefault();
-
     const { data, error } = await signInWithEmail(email);
-
     if (data) {
       router.push("medicine");
     }
@@ -22,5 +20,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;

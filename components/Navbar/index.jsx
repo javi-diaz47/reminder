@@ -30,7 +30,7 @@ const routes = [
 const drawerWidth = 240;
 
 const Navbar = (props) => {
-  const { window, children } = props;
+  const { window, children, user } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -78,7 +78,7 @@ const Navbar = (props) => {
             },
           }}
         >
-          <Sidebar routes={routes} handleDrawerToggle={handleDrawerToggle} />
+          <Sidebar user={user} routes={routes} handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -91,7 +91,7 @@ const Navbar = (props) => {
           }}
           open
         >
-          <Sidebar routes={routes} handleDrawerToggle={handleDrawerToggle} />
+          <Sidebar user={user} routes={routes} handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
       </Box>
       <Box

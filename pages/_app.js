@@ -3,19 +3,26 @@ import { Layout } from "../components/Layout";
 import "../styles/globals.css";
 import { checkUser, handleAuthChange } from "../utils/auth";
 import { supabase } from "../utils/supabase";
+import jwt from "jsonwebtoken";
+import { getCookie } from "cookies-next";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, userData }) {
   const [authenticatedState, setAuthenticatedState] = useState("");
+  const [user, setUser] = useState(userData);
+  console.log(userData);
   useEffect(() => {
     const {
       data: { subscription: authListener },
     } = supabase.auth.onAuthStateChange((event, session) => {
       handleAuthChange(event, session);
 
+      console.log(`Event: ${event}`);
       //redirect the user signed from the magiclink to the profile page
       if (event === "SIGNED_IN") {
+        console.log("on signed in");
         setAuthenticatedState("authenticated");
-        console.log(session);
+        setUser(jwt.decode(session.access_token).user_metadata);
+        handleAuthChange(event, session);
       }
 
       if (event === "SIGNED_OUT") {
@@ -31,10 +38,21 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <Layout>
+    <Layout user={user}>
       <Component {...pageProps} />
     </Layout>
   );
 }
 
 export default MyApp;
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie("token", { req, res });
+  const user = jwt.decode(token);
+
+  return {
+    props: {
+      userData: user,
+    },
+  };
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "../Navbar";
 
-export const Layout = ({ children }) => {
-  return <Navbar>{children}</Navbar>;
+export const Layout = ({ user, children }) => {
+  return <Navbar user={user}>{children}</Navbar>;
 };

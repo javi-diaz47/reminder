@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-// import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -15,6 +14,7 @@ export default function Home() {
         {/* <Link href="sing-up"> Registrar </Link> */}
         Welcome to <a href="">MyDocRminder</a>
       </main>
+      <footer></footer>
     </div>
   );
 }

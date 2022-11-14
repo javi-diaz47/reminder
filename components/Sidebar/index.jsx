@@ -10,7 +10,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import ProfilePicture from "../ProfilePicture";
 
-const Sidebar = ({ routes, handleDrawerToggle }) => {
+const Sidebar = ({ user, routes, handleDrawerToggle }) => {
   return (
     <div>
       <Toolbar>
@@ -25,7 +25,7 @@ const Sidebar = ({ routes, handleDrawerToggle }) => {
         </IconButton>
       </Toolbar>
       <List>
-        <ProfilePicture />
+        <ProfilePicture url={user?.picture} />
         {routes.map(({ url, text, icon }) => (
           <Link key={text} onClick={handleDrawerToggle} href={url}>
             <ListItem disablePadding>

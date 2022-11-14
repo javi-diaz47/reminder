@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import { supabase } from "../../utils/supabase";
 
 const ProfilePicture = ({ url }) => {
+  console.log(url);
   return (
     <div className="flex justify-center">
       <figure
@@ -13,7 +15,7 @@ const ProfilePicture = ({ url }) => {
            "
       >
         <Image
-          src={url || "https://lh3.googleusercontent.com/a/ALm5wu29CN4UC9sUy_F7XVCmac7MmQ_0RXDwepXzFVk0JQ=s96-c"}
+          src={url || "https://lh3.googleusercontent.com/a/ALm5wu1SIqzsXs5SDWvBtuKBVya79hRc08lR56mY1HmBgA=s96-c"}
           alt="foto de perfil"
           layout="fill"
           objectFit="cover"

@@ -13,18 +13,6 @@ async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
   });
-  console.log("from sign in");
-  console.log(data);
-
-  const user = await data.user.user_metadata;
-
-  await supabase.from("user").insert([
-    {
-      name: user.name,
-      email: user.email,
-      picture: user.picture,
-    },
-  ]);
 
   return { data, error };
 }
