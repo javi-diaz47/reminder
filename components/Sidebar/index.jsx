@@ -25,7 +25,7 @@ const Sidebar = ({ user, routes, handleDrawerToggle }) => {
         </IconButton>
       </Toolbar>
       <List>
-        <ProfilePicture url={user?.picture} />
+        <ProfilePicture name={user?.name} email={user?.email} url={user?.picture} />
         {routes.map(({ url, text, icon }) => (
           <Link key={text} onClick={handleDrawerToggle} href={url}>
             <ListItem disablePadding>

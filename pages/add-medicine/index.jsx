@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 export default function addMedicine({ id }) {
   const [name, setName] = useState("");
-  const { modal, handleModal } = useModal("¡Se agrego Exitosamente!");
+  const { modal, handleModal } = useModal();
   const route = useRouter();
 
   const onSubmit = async (ev) => {
@@ -37,7 +37,7 @@ export default function addMedicine({ id }) {
 
   return (
     <div className="flex flex-col gap-8 max-w-screen-md">
-      {modal}
+      {modal("¡Se agrego Exitosamente!")}
       <h2 className="text-3xl font-bold">Agregar Medicamento</h2>
       <form onSubmit={onSubmit} className="flex flex-col gap-8">
         <Input

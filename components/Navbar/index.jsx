@@ -17,12 +17,12 @@ const routes = [
     icon: <HomeIcon className="w-8" />,
   },
   {
-    url: "statistics",
+    url: "/statistics",
     text: "Estadistica",
     icon: <ChartBarIcon className="w-8" />,
   },
   {
-    url: "medicine",
+    url: "/medicine",
     text: "Medicinas",
     icon: <HeartIcon className="w-8" />,
   },
